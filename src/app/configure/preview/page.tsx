@@ -9,7 +9,7 @@ interface PreviewPageProps {
   };
 }
 
-const page = async ({ searchParams }: PreviewPageProps) => {
+const Page = async ({ searchParams }: PreviewPageProps) => {
   const { id } = searchParams;
   if (!id || typeof id !== "string") {
     return notFound();
@@ -27,4 +27,4 @@ const page = async ({ searchParams }: PreviewPageProps) => {
   return <DesignPreview configuration={configuration} />;
 };
 
-export default page;
+export default Page;

@@ -8,7 +8,7 @@ interface DesignPageProps {
   };
 }
 
-const page = async ({ searchParams }: DesignPageProps) => {
+const Page = async ({ searchParams }: DesignPageProps) => {
   // make the db call
   const { id } = searchParams;
   if (!id || typeof id !== "string") {
@@ -37,4 +37,4 @@ const page = async ({ searchParams }: DesignPageProps) => {
   );
 };
 
-export default page;
+export default Page;
