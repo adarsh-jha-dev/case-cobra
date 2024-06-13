@@ -351,7 +351,7 @@ const DesignConfigurator = ({
                               className="flex mt-2 text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right"
                               as="span"
                             >
-                              {formatPrice(option.price / 100)}
+                              {formatPrice(option.price)}
                               <span className="font-medium text-gray-900"></span>
                             </RadioGroup.Description>
                           </RadioGroup.Option>
@@ -370,12 +370,13 @@ const DesignConfigurator = ({
             <div className="w-full flex gap-6 items-center">
               <p className="font-medium whitespace-nowrap">
                 {formatPrice(
-                  (BASE_PRICE + options.material.price + options.finish.price) /
-                    100
+                  BASE_PRICE + options.material.price + options.finish.price
                 )}
               </p>
               <Button
                 size="sm"
+                isLoading={isPending || isUploading}
+                loadingText="Finalizing Design..."
                 onClick={() =>
                   _saveConfig({
                     configId,
@@ -388,9 +389,8 @@ const DesignConfigurator = ({
                 className="w-full"
               >
                 Continue
-                <ArrowRight className=" h-4 w-4 ml-1.5 inline" />
-                {(isPending || isUploading) && (
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                {!isUploading && !isPending && (
+                  <ArrowRight className=" h-4 w-4 ml-1.5 inline" />
                 )}
               </Button>
             </div>
