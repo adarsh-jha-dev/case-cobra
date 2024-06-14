@@ -376,7 +376,8 @@ const DesignConfigurator = ({
               <Button
                 size="sm"
                 isLoading={isPending || isUploading}
-                loadingText="Finalizing Design..."
+                disabled={isPending || isUploading}
+                loadingText="Finalizing Design"
                 onClick={() =>
                   _saveConfig({
                     configId,
